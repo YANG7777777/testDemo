@@ -32,6 +32,16 @@ const routes = [
     path: '/table',
     name: 'table',
     component: () => import(/* webpackChunkName: "table" */ '../views/table')
+  },
+  {
+    path: '/adjTable',
+    name: 'AdjTable',
+    component: () => import(/* webpackChunkName: "AdjTable" */ '../views/table/adjTable.vue')
+  },
+  {
+    path: '/bias',
+    name: 'bias',
+    component: () => import(/* webpackChunkName: "bias" */ '../views/table/bias.vue')
   }
 ]
 
