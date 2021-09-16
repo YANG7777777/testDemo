@@ -9,6 +9,10 @@
           prop="date"
           label="日期"
           width="180">
+           <!-- <template slot-scope="scope">
+          <span v-if="item.address !== 'batchInvest' && item.address !== 'remark'">{{scope.row[item.address]}}</span>
+          <edit-cell v-else v-model="scope.row[item.address]" :can-edit="true"/>
+          </template> -->
         </el-table-column>
         <el-table-column
           prop="name"
@@ -31,6 +35,7 @@
 
 <script>
 
+// import EditCell from '../../components/editCell'
 export default {
   name: 'Table',
   data () {
@@ -82,6 +87,9 @@ export default {
       })
     }
   }
+  // components: {
+  //   EditCell
+  // }
 }
 </script>
 
