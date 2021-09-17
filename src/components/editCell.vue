@@ -91,7 +91,9 @@ export default {
      * 丢失焦点关闭编辑状态，并保存数据
      */
     loseFocus (event) {
+      console.log('rr', event)
       const value = this.formatData(event.target.value)
+      console.log('qq', value)
       this.editData(value)
       this.closeEditStatus(value)
       this.afterEdit(value)

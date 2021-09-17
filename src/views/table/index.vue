@@ -3,29 +3,16 @@
     <el-table
         :data="tableData"
          border
-         :span-method="arraySpanMethod"
         style="width: 100%">
         <el-table-column
-          prop="date"
-          label="日期"
-          width="180">
-           <!-- <template slot-scope="scope">
-          <span v-if="item.address !== 'batchInvest' && item.address !== 'remark'">{{scope.row[item.address]}}</span>
-          <edit-cell v-else v-model="scope.row[item.address]" :can-edit="true"/>
-          </template> -->
-        </el-table-column>
-        <el-table-column
-          prop="name"
-          label="姓名"
-          width="180">
-        </el-table-column>
-        <el-table-column
-          prop="address"
-          label="地址">
-        </el-table-column>
-         <el-table-column
-          prop="book"
-          label="书籍">
+        v-for="(item) in colunms"
+        :key="item.prop"
+          :prop="item.index"
+          :label="item.label">
+             <template slot-scope="scope">
+               <span v-if="item.prop !== 'address' && item.prop !== 'book'">{{scope.row[item.prop]}}</span>
+               <edit-cell :afterEdit = 'afterEdit' v-else v-model="scope.row[item.prop]" :can-edit="true"/>
+             </template>
         </el-table-column>
       </el-table>
       <el-button type="success" @click="toAnother">naotherTable</el-button>
@@ -35,7 +22,7 @@
 
 <script>
 
-// import EditCell from '../../components/editCell'
+import EditCell from '../../components/editCell'
 export default {
   name: 'Table',
   data () {
@@ -47,12 +34,12 @@ export default {
         book: 'Java'
       }, {
         date: '2016-05-04',
-        name: '王小虎',
+        name: '王二虎',
         address: '上海市普陀区金沙江路 1517 弄',
         book: 'Java'
       }, {
         date: '2016-05-01',
-        name: '王小虎',
+        name: '王三虎',
         address: '上海市普陀区金沙江路 1519 弄',
         book: 'Java'
       }, {
@@ -60,22 +47,43 @@ export default {
         name: '王小虎',
         address: '上海市普陀区金沙江路 1516 弄',
         book: 'Java'
-      }]
+      }],
+      colunms: [
+        {
+          prop: 'date',
+          label: '日期'
+        },
+        {
+          prop: 'name',
+          label: '姓名'
+        },
+        {
+          prop: 'address',
+          label: '地址'
+        },
+        {
+          prop: 'book',
+          label: '书籍'
+        }
+      ]
     }
+  },
+  components: {
+    EditCell
   },
   methods: {
     // row 当前行、 column 当前列、 rowIndex 当前行号、 columnIndex 当前列号
     // 该函数可以返回一个包含两个元素的数组，第一个元素代表rowspan，第二个元素代表colspan。
     // 也可以返回一个键名为rowspan和colspan的对象。
-    arraySpanMethod ({ row, column, rowIndex, columnIndex }) {
-      if (rowIndex % 2 === 0) { // 当前行号能被2整除的时候
-        if (columnIndex === 0) { // 当前列号等于0的时候
-          return [1, 2] // 在当前列号等于零的时候 合并一行两列
-        } else if (columnIndex === 1) {
-          return [0, 0]
-        }
-      }
-    },
+    // arraySpanMethod ({ row, column, rowIndex, columnIndex }) {
+    //   if (rowIndex % 2 === 0) { // 当前行号能被2整除的时候
+    //     if (columnIndex === 0) { // 当前列号等于0的时候
+    //       return [1, 2] // 在当前列号等于零的时候 合并一行两列
+    //     } else if (columnIndex === 1) {
+    //       return [0, 0]
+    //     }
+    //   }
+    // },
     toAnother () {
       this.$router.push({
         path: '/adjTable'
@@ -85,11 +93,14 @@ export default {
       this.$router.push({
         path: '/bias'
       })
+    },
+    afterEdit (e) {
+      console.log('afterEdit', e)
+    },
+    input (e) {
+      console.log('input', e)
     }
   }
-  // components: {
-  //   EditCell
-  // }
 }
 </script>
 
