@@ -42,6 +42,11 @@ const routes = [
     path: '/bias',
     name: 'bias',
     component: () => import(/* webpackChunkName: "bias" */ '../views/table/bias.vue')
+  },
+  {
+    path: '/amap',
+    name: 'amap',
+    component: () => import(/* webpackChunkName: "amap" */ '../views/amap')
   }
 ]
 
