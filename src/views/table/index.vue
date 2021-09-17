@@ -2,16 +2,19 @@
   <div id="tableLearn">
     <el-table
         :data="tableData"
-         border
+        border
+        @cell-click="tableCellClick"
         style="width: 100%">
         <el-table-column
         v-for="(item) in colunms"
         :key="item.prop"
-          :prop="item.index"
+          :prop="item.prop"
           :label="item.label">
              <template slot-scope="scope">
                <span v-if="item.prop !== 'address' && item.prop !== 'book'">{{scope.row[item.prop]}}</span>
-               <edit-cell :afterEdit = 'afterEdit' v-else v-model="scope.row[item.prop]" :can-edit="true"/>
+               <!-- 编辑框组件 -->
+               <edit-cell :afterEdit = 'afterEdit' :targetValue="targetValue" v-else v-model="scope.row[item.prop]" :can-edit="true"/>
+               <!-- 编辑框组件 -->
              </template>
         </el-table-column>
       </el-table>
@@ -28,21 +31,25 @@ export default {
   data () {
     return {
       tableData: [{
+        id: '1',
         date: '2016-05-02',
         name: '王小虎',
         address: '上海市普陀区金沙江路 1518 弄',
         book: 'Java'
       }, {
+        id: '2',
         date: '2016-05-04',
         name: '王二虎',
         address: '上海市普陀区金沙江路 1517 弄',
         book: 'Java'
       }, {
+        id: '3',
         date: '2016-05-01',
         name: '王三虎',
         address: '上海市普陀区金沙江路 1519 弄',
         book: 'Java'
       }, {
+        id: '4',
         date: '2016-05-03',
         name: '王小虎',
         address: '上海市普陀区金沙江路 1516 弄',
@@ -65,7 +72,8 @@ export default {
           prop: 'book',
           label: '书籍'
         }
-      ]
+      ],
+      targetValue: {}
     }
   },
   components: {
@@ -94,11 +102,16 @@ export default {
         path: '/bias'
       })
     },
-    afterEdit (e) {
-      console.log('afterEdit', e)
+    tableCellClick (row, column, event, cell) {
+      this.targetValue = {
+        id: row.id,
+        headerName: column.property
+      }
     },
-    input (e) {
-      console.log('input', e)
+    afterEdit (e) {
+      // 1.根据返回值来发送接口修改数据
+      // 2.修改请求回来的数据
+      console.log('afterEdit', e)
     }
   }
 }

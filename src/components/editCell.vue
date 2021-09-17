@@ -33,6 +33,9 @@ export default {
     value: {
       required: true
     },
+    targetValue: {
+      type: Object
+    },
     /**
      * 是否可编辑
      */
@@ -91,12 +94,11 @@ export default {
      * 丢失焦点关闭编辑状态，并保存数据
      */
     loseFocus (event) {
-      console.log('rr', event)
       const value = this.formatData(event.target.value)
-      console.log('qq', value)
       this.editData(value)
       this.closeEditStatus(value)
-      this.afterEdit(value)
+      if (this.value === value) { return } // 增加判断如果值没有变化 则不执行下面的函数，无需修改
+      this.afterEdit({ ...this.targetValue, value })
     },
 
     /**
