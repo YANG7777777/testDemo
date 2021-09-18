@@ -47,6 +47,11 @@ const routes = [
     path: '/amap',
     name: 'amap',
     component: () => import(/* webpackChunkName: "amap" */ '../views/amap')
+  },
+  {
+    path: '/tree',
+    name: 'tree',
+    component: () => import(/* webpackChunkName: "tree" */ '../views/tree')
   }
 ]
 
