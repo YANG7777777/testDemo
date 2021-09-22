@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <HelloWorld/>
+    <HelloWorld />
     <h3>mapMutations</h3>
     <button @click="add">+</button>
     {{ count }}
@@ -8,7 +8,10 @@
     <p>{{arrayData | setArray | sortArray}}</p>
 
     <ul>
-     <li v-for="(item, index) in arrayData" :key="index">{{ item | filterOne(item, 20) }}</li>
+      <li
+        v-for="(item, index) in arrayData"
+        :key="index"
+      >{{ item | filterOne(item, 20) }}</li>
     </ul>
   </div>
 </template>
@@ -19,7 +22,7 @@ import HelloWorld from '@/components/HelloWorld.vue'
 import { mapMutations, mapGetters } from 'vuex'
 import Vue from 'vue'
 Vue.filter('filterOne', function (value, one) {
-  console.log(value, one)
+  // console.log(value, one)
   return (value + one)
 })
 

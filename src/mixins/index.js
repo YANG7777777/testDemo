@@ -6,7 +6,7 @@ export default {
   },
   methods: {
     getHost () {
-      console.log(this)
+      // console.log(this)
       this.host = location.host
     }
   }

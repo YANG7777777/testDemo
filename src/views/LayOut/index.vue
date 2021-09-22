@@ -14,7 +14,7 @@
             active-text-color="#ffd04b"
             @select="handeleSelect"
             :unique-opened="true"
-            :default-active="$route.path"
+            :default-active="this.currentPath"
           >
             <sliderbar-item :tree="routes"></sliderbar-item>
           </el-menu>
@@ -38,7 +38,8 @@ export default {
   name: 'ManagerialSystem',
   data () {
     return {
-      routes: [] // 路由表
+      routes: [], // 路由表
+      currentPath: ''
     }
   },
   components: {
@@ -46,7 +47,9 @@ export default {
   },
   methods: {
     handeleSelect (key, keyPath) {
+      console.log(this.$route.path)
       const path = key === 'dashboard' ? '/' + key : keyPath.join('/')
+      this.currentPath = path
       this.$router.push(path)
     },
     getRoutes () {

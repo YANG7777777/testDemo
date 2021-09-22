@@ -1,15 +1,18 @@
 <template>
   <div class="about">
-   <p v-bgColor='{color: "red"}'>{{host}}</p>
-   <button @click="getHost">获取host</button>
-   <p></p>
-   <ul>
-    <li v-for="(item, index) in setObj" :key="index">
-     {{item}}
-    </li>
-   </ul>
-   <button @click="setData">添加数据</button>
-   <button @click="delData">删除age</button>
+    <p v-bgColor='{color: "red"}'>{{host}}</p>
+    <button @click="getHost">获取host</button>
+    <p></p>
+    <ul>
+      <li
+        v-for="(item, index) in setObj"
+        :key="index"
+      >
+        {{item}}
+      </li>
+    </ul>
+    <button @click="setData">添加数据</button>
+    <button @click="delData">删除age</button>
   </div>
 </template>
 
@@ -44,7 +47,7 @@ export default {
   directives: {
     bgColor: {
       bind (el, binding, vnode) {
-        console.log(el)
+        // console.log(el)
         el.style.backgroundColor = binding.value.color
       }
     }

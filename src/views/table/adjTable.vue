@@ -1,40 +1,56 @@
 <template>
   <div class="adj">
     <el-table
-          :data="listData"
-         :span-method="objectSpanMethod"
-          class="tableArea"
-          style="width: 100%">
-          <el-table-column
-            prop="type"
-            label="序号"
-            align="center"
-            width="200"/>
-          <el-table-column
-            prop="sheetType"
-            label="工单类型"
+      :data="listData"
+      :span-method="objectSpanMethod"
+      class="tableArea"
+      style="width: 100%"
+    >
+      <el-table-column
+        prop="type"
+        label="序号"
+        align="center"
+        width="200"
+      />
+      <el-table-column
+        prop="sheetType"
+        label="工单类型"
+      />
+      <el-table-column
+        prop="taskKey"
+        label="taskKey"
+      />
+      <el-table-column
+        prop="templateUrl"
+        label="templateUrl"
+      />
+      <el-table-column label="操作">
+        <template slot-scope="scope">
+          <el-tooltip
+            class="item"
+            effect="dark"
+            content="修改"
+            placement="top-start"
+          >
+            <i
+              class="el-icon-edit-outline"
+              @click="modify(scope)"
             />
-          <el-table-column
-            prop="taskKey"
-            label="taskKey"
+          </el-tooltip>
+          <el-tooltip
+            class="item"
+            effect="dark"
+            content="删除"
+            placement="top-start"
+          >
+            <i
+              class="el-icon-delete"
+              @click="deleteData(scope)"
             />
-          <el-table-column
-            prop="templateUrl"
-            label="templateUrl"
-            />
-          <el-table-column
-            label="操作"
-            >
-            <template slot-scope="scope">
-                <el-tooltip class="item" effect="dark" content="修改" placement="top-start">
-                        <i class="el-icon-edit-outline"  @click="modify(scope)" />
-                      </el-tooltip>
-                      <el-tooltip class="item" effect="dark" content="删除" placement="top-start">
-              <i class="el-icon-delete" @click="deleteData(scope)" />
-                      </el-tooltip>
-            </template>
-          </el-table-column >
-        </el-table>
+          </el-tooltip>
+        </template>
+      </el-table-column>
+    </el-table>
   </div>
 </template>
 
@@ -119,7 +135,7 @@ export default {
           }
         }
       })
-      console.log(this.spanArr, this.position)
+      // console.log(this.spanArr, this.position)
     },
     objectSpanMethod ({ row, column, rowIndex, columnIndex }) { // 表格合并行
       if (columnIndex === 0) {
@@ -163,10 +179,10 @@ i[class^="el-icon"] {
   font-size: 16px;
   cursor: pointer;
 }
-.modify_table td{
-        padding: 10px ;
+.modify_table td {
+  padding: 10px;
 }
-.item_title{
-    text-align: right;
+.item_title {
+  text-align: right;
 }
 </style>

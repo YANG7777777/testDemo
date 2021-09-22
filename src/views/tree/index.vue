@@ -1,7 +1,11 @@
 <template>
   <div class="tree">
-   递归渲染列表
-   <el-tree :data="tree" :props="defaultProps" @node-click="handleNodeClick"></el-tree>
+    递归渲染列表
+    <el-tree
+      :data="tree"
+      :props="defaultProps"
+      @node-click="handleNodeClick"
+    ></el-tree>
 
   </div>
 </template>
@@ -88,11 +92,11 @@ export default {
         }
       })
       this.tree = val
-      console.log(val)
+      // console.log(val)
       return val
     },
     handleNodeClick (data) {
-      console.log(data)
+      // console.log(data)
     }
   },
   mounted () {
@@ -103,5 +107,4 @@ export default {
 </script>
 
 <style>
-
 </style>

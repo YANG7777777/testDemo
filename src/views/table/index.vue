@@ -1,25 +1,39 @@
 <template>
   <div id="tableLearn">
     <el-table
-        :data="tableData"
-        border
-        @cell-click="tableCellClick"
-        style="width: 100%">
-        <el-table-column
+      :data="tableData"
+      border
+      @cell-click="tableCellClick"
+      style="width: 100%"
+    >
+      <el-table-column
         v-for="(item) in colunms"
         :key="item.prop"
-          :prop="item.prop"
-          :label="item.label">
-             <template slot-scope="scope">
-               <span v-if="item.prop !== 'address' && item.prop !== 'book'">{{scope.row[item.prop]}}</span>
-               <!-- 编辑框组件 -->
-               <edit-cell :afterEdit = 'afterEdit' :targetValue="targetValue" v-else v-model="scope.row[item.prop]" :can-edit="true"/>
-               <!-- 编辑框组件 -->
-             </template>
-        </el-table-column>
-      </el-table>
-      <el-button type="success" @click="toAnother">naotherTable</el-button>
-      <el-button type="success" @click="biasButton">斜线</el-button>
+        :prop="item.prop"
+        :label="item.label"
+      >
+        <template slot-scope="scope">
+          <span v-if="item.prop !== 'address' && item.prop !== 'book'">{{scope.row[item.prop]}}</span>
+          <!-- 编辑框组件 -->
+          <edit-cell
+            :afterEdit='afterEdit'
+            :targetValue="targetValue"
+            v-else
+            v-model="scope.row[item.prop]"
+            :can-edit="true"
+          />
+          <!-- 编辑框组件 -->
+        </template>
+      </el-table-column>
+    </el-table>
+    <el-button
+      type="success"
+      @click="toAnother"
+    >naotherTable</el-button>
+    <el-button
+      type="success"
+      @click="biasButton"
+    >斜线</el-button>
   </div>
 </template>
 
@@ -111,12 +125,11 @@ export default {
     afterEdit (e) {
       // 1.根据返回值来发送接口修改数据
       // 2.修改请求回来的数据
-      console.log('afterEdit', e)
+      // console.log('afterEdit', e)
     }
   }
 }
 </script>
 
 <style lang="less">
-
 </style>

@@ -78,7 +78,7 @@ const routes = [
         path: 'table',
         name: 'table',
         meta: { title: '可编辑', icon: 'example' },
-        component: () => import(/* webpackChunkName: "table" */ '../views/table')
+        component: () => import(/* webpackChunkName: "table" */ '../views/table/index.vue')
       },
       {
         path: 'adjTable',
