@@ -1,9 +1,17 @@
 const app = {
   state: {
     roles: ['admin'], // 角色
-    routes: []
+    routes: [],
+    count: 0
   },
-  mutations: {},
+  mutations: {
+    add: (state) => {
+      state.count++
+    },
+    minus: (state) => {
+      state.count--
+    }
+  },
   actions: {}
 }
 export default app

@@ -1,9 +1,0 @@
-diff a/src/store/index.js b/src/store/index.js	(rejected hunks)
-@@ -1,5 +1,7 @@
- import Vue from 'vue'
- import Vuex from 'vuex'
-+import getters from '@/store/getters'
-+import app from './modules/app'
- 
- Vue.use(Vuex)
- 

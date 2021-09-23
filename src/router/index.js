@@ -50,17 +50,22 @@ const routes = [
         path: 'about',
         name: 'About',
         meta: { title: '$set', icon: 'example' },
-        component: () => import(/* webpackChunkName: "about" */ '../views/about/About.vue')
+        component: () => import(/* webpackChunkName: "about" */ '../views/tools/About.vue')
       }, {
         path: 'extend',
         name: 'Extend',
         meta: { title: 'extend', icon: 'example' },
-        component: () => import(/* webpackChunkName: "extend" */ '../views/extend')
+        component: () => import(/* webpackChunkName: "extend" */ '../views/tools/index.vue')
       }, {
         path: 'tree',
         name: 'tree',
         meta: { title: 'tree', icon: 'example' },
         component: () => import(/* webpackChunkName: "tree" */ '../views/tree')
+      }, {
+        path: 'filters',
+        name: 'Filters',
+        meta: { title: 'filters', icon: 'example' },
+        component: () => import(/* webpackChunkName: "extend" */ '../views/tools/filters.vue')
       }]
   },
   {
