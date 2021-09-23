@@ -1,5 +1,5 @@
 <template>
-  <div class="home">
+  <div class="mapMutations">
     <HelloWorld />
     <h3>mapMutations</h3>
     <button @click="add">+</button>
@@ -27,7 +27,7 @@ Vue.filter('filterOne', function (value, one) {
 })
 
 export default {
-  name: 'Home',
+  name: 'MapMutations',
   data () {
     return {
       extendCount: 0,

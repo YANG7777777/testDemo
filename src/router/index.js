@@ -27,32 +27,47 @@ const routes = [
 
   },
   {
+    path: '/Map',
+    component: Layout,
+    redirect: '/Map/mapMutations',
+    name: 'Map',
+    meta: { title: 'Map', icon: 'el-icon-coin' },
+    children: [{
+      path: 'mapMutations',
+      name: 'MapMutations',
+      meta: { title: 'mapMutations', icon: 'example' },
+      component: () => import(/* webpackChunkName: "MapMutations" */ '../views/map/mapMutations.vue')
+    }]
+  },
+  {
     path: '/Api',
     component: Layout,
     redirect: '/Api/home',
     name: 'Api',
     meta: { title: 'Api', icon: 'el-icon-setting' },
-    children: [{
-      path: 'home',
-      name: 'Home',
-      meta: { title: 'mapMutations', icon: 'example' },
-      component: () => import(/* webpackChunkName: "about" */ '../views/Home.vue')
-    }, {
-      path: 'about',
-      name: 'About',
-      meta: { title: '$set', icon: 'example' },
-      component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
-    }, {
-      path: 'extend',
-      name: 'Extend',
-      meta: { title: 'extend', icon: 'example' },
-      component: () => import(/* webpackChunkName: "extend" */ '../views/extend')
-    }, {
-      path: 'tree',
-      name: 'tree',
-      meta: { title: 'tree', icon: 'example' },
-      component: () => import(/* webpackChunkName: "tree" */ '../views/tree')
-    }]
+    children: [
+    // {
+    //   path: 'home',
+    //   name: 'Home',
+    //   meta: { title: 'mapMutations', icon: 'example' },
+    //   component: () => import(/* webpackChunkName: "about" */ '../views/Home.vue')
+    // },
+      {
+        path: 'about',
+        name: 'About',
+        meta: { title: '$set', icon: 'example' },
+        component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
+      }, {
+        path: 'extend',
+        name: 'Extend',
+        meta: { title: 'extend', icon: 'example' },
+        component: () => import(/* webpackChunkName: "extend" */ '../views/extend')
+      }, {
+        path: 'tree',
+        name: 'tree',
+        meta: { title: 'tree', icon: 'example' },
+        component: () => import(/* webpackChunkName: "tree" */ '../views/tree')
+      }]
   },
   {
     path: '/form',
