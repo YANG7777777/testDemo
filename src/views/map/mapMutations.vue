@@ -22,14 +22,10 @@ export default {
   name: 'MapMutations',
   data () {
     return {
-      extendCount: 0
     }
   },
   methods: {
-    ...mapMutations(['add', 'minus']),
-    getCount: () => {
-      this.extendCount = 2000
-    }
+    ...mapMutations(['add', 'minus'])
   },
   mounted () {
     this.$nextTick(() => {
