@@ -52,7 +52,7 @@ export default {
   },
   mounted () {
     this.$nextTick(() => {
-      console.log('dom更新延迟回调')
+      // console.log('dom更新延迟回调')
     })
   },
   computed: {

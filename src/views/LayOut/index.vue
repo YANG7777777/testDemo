@@ -14,7 +14,7 @@
             active-text-color="#ffd04b"
             @select="handeleSelect"
             :unique-opened="true"
-            :default-active="this.currentPath"
+            :default-active="currentPath"
           >
             <sliderbar-item :tree="routes"></sliderbar-item>
           </el-menu>
@@ -47,18 +47,25 @@ export default {
   },
   methods: {
     handeleSelect (key, keyPath) {
-      console.log(this.$route.path)
       const path = key === 'dashboard' ? '/' + key : keyPath.join('/')
-      this.currentPath = path
       this.$router.push(path)
+      // 根据相应的路由跳转设置导航高亮
+      this.currentPath = this.getPath(path)
     },
     getRoutes () {
       // 获取所有路由表
       this.routes = this.$router.options.routes
+    },
+    getPath (str) {
+      return str.substring(str.lastIndexOf('/') + 1)
     }
   },
   created () {
     this.getRoutes()
+  },
+  mounted () {
+    // 页面刷新根据路由让导航显示高亮
+    this.currentPath = this.getPath(this.$route.path)
   }
 }
 </script>

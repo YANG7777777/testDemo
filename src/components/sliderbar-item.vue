@@ -26,7 +26,7 @@
         >
           <i :class="item.meta.icon || ''"></i>
           <span slot="title">
-            {{ item.meta.title}}
+            {{ item.meta.title }}
           </span>
         </el-menu-item>
       </div>
@@ -45,8 +45,7 @@ export default {
     return {}
   },
   mounted () {
-  },
-  methods: {}
+  }
 }
 </script>
 <style scoped>
