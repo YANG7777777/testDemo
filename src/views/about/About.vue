@@ -18,7 +18,7 @@
 
 <script>
 
-import mixins from '../mixins'
+import mixins from '../../mixins'
 import Vue from 'vue'
 
 Vue.directive('imgUrl', function (el, binding) {

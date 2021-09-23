@@ -50,7 +50,7 @@ const routes = [
         path: 'about',
         name: 'About',
         meta: { title: '$set', icon: 'example' },
-        component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
+        component: () => import(/* webpackChunkName: "about" */ '../views/about/About.vue')
       }, {
         path: 'extend',
         name: 'Extend',
