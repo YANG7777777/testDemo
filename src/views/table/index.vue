@@ -26,14 +26,6 @@
         </template>
       </el-table-column>
     </el-table>
-    <el-button
-      type="success"
-      @click="toAnother"
-    >naotherTable</el-button>
-    <el-button
-      type="success"
-      @click="biasButton"
-    >斜线</el-button>
   </div>
 </template>
 
@@ -106,16 +98,6 @@ export default {
     //     }
     //   }
     // },
-    toAnother () {
-      this.$router.push({
-        path: '/adjTable'
-      })
-    },
-    biasButton () {
-      this.$router.push({
-        path: '/bias'
-      })
-    },
     tableCellClick (row, column, event, cell) {
       this.targetValue = {
         id: row.id,
@@ -125,7 +107,7 @@ export default {
     afterEdit (e) {
       // 1.根据返回值来发送接口修改数据
       // 2.修改请求回来的数据
-      // console.log('afterEdit', e)
+      console.log('afterEdit', e)
     }
   }
 }
