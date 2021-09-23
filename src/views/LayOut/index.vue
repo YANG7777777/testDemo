@@ -1,7 +1,9 @@
 <template>
   <div class="system">
     <el-container style="margin: 0;padding:0;">
-      <el-header style="background-color:#304156">Header</el-header>
+      <el-header>
+        <headerItem></headerItem>
+      </el-header>
       <el-container style="height: 650px">
         <el-aside
           width="201px"
@@ -33,7 +35,9 @@
 
 <script>
 
+import { mapGetters } from 'vuex'
 import sliderbarItem from '@/components/sliderbar-item'
+import headerItem from '@/components/headerItem'
 export default {
   name: 'ManagerialSystem',
   data () {
@@ -43,7 +47,8 @@ export default {
     }
   },
   components: {
-    sliderbarItem
+    sliderbarItem,
+    headerItem
   },
   methods: {
     handeleSelect (key, keyPath) {
@@ -66,6 +71,11 @@ export default {
   mounted () {
     // 页面刷新根据路由让导航显示高亮
     this.currentPath = this.getPath(this.$route.path)
+  },
+  computed: {
+    ...mapGetters([
+      'count'
+    ])
   }
 }
 </script>
