@@ -61,6 +61,11 @@ const routes = [
         name: 'tree',
         meta: { title: 'tree', icon: 'example' },
         component: () => import(/* webpackChunkName: "tree" */ '../views/tree')
+      }, {
+        path: 'filters',
+        name: 'Filters',
+        meta: { title: 'filters', icon: 'example' },
+        component: () => import(/* webpackChunkName: "extend" */ '../views/tools/filters.vue')
       }]
   },
   {
