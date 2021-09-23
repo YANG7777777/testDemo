@@ -46,12 +46,6 @@ const routes = [
     name: 'Api',
     meta: { title: 'Api', icon: 'el-icon-setting' },
     children: [
-    // {
-    //   path: 'home',
-    //   name: 'Home',
-    //   meta: { title: 'mapMutations', icon: 'example' },
-    //   component: () => import(/* webpackChunkName: "about" */ '../views/Home.vue')
-    // },
       {
         path: 'about',
         name: 'About',

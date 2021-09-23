@@ -1,5 +1,5 @@
 <script>
-import BaseMobel from '../Home'
+import BaseMobel from '../map/mapMutations'
 export default {
   name: 'extend',
   extends: BaseMobel,
