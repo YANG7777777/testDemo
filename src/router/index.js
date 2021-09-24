@@ -110,15 +110,20 @@ const routes = [
   },
 
   {
-    path: '/amap',
-    name: 'Amap',
+    path: '/chart',
+    name: 'Echart',
     component: Layout,
-    meta: { title: '地图', icon: 'el-icon-location-information' },
+    meta: { title: '图形', icon: 'el-icon-location-information' },
     children: [{
       name: 'Amap',
       path: 'ampa',
       meta: { title: '地图', icon: 'example' },
-      component: () => import(/* webpackChunkName: "amap" */ '../views/amap')
+      component: () => import(/* webpackChunkName: "amap" */ '../views/chart/amap')
+    }, {
+      name: 'Canvas',
+      path: 'canvas',
+      meta: { title: 'Canvas', icon: 'example' },
+      component: () => import(/* webpackChunkName: "amap" */ '../views/chart/canvas')
     }]
   }
 ]
