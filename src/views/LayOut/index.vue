@@ -1,7 +1,7 @@
 <template>
   <div class="system">
     <el-container style="margin: 0;padding:0;">
-      <el-header>
+      <el-header style="background-color: #304156;">
         <headerItem></headerItem>
       </el-header>
       <el-container style="height: 650px">
@@ -86,11 +86,11 @@ body {
   margin: 0;
   padding: 0;
 }
-.el-header,
+/* .el-header,
 .el-footer {
   background-color: #B3C0D1;
   color: #333;
-}
+} */
 
 .el-aside {
   background-color: #D3DCE6;
