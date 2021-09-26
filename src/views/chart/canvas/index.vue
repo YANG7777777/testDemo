@@ -36,6 +36,12 @@
       height="100"
       style="border: 1px solid #ccc"
     ></canvas>
+    <canvas
+      id="tutorial7"
+      width="100"
+      height="100"
+      style="border: 1px solid #ccc"
+    ></canvas>
   </div>
 </template>
 
@@ -108,6 +114,16 @@ export default {
       ctx.quadraticCurveTo(cp1x, cp1y, x, y) // 绘制二次贝塞尔曲线
       ctx.stroke()
     },
+    drawColor () {
+      var canvas = document.getElementById('tutorial7')
+      var ctx = canvas.getContext('2d')
+      for (var i = 0; i < 6; i++) {
+        for (var j = 0; j < 6; j++) {
+          ctx.fillStyle = 'rgb(' + Math.floor(255 - 42.5 * i) + ',' + Math.floor(255 - 42.5 * j) + ',0)'
+          ctx.fillRect(j * 16, i * 16, 16, 16)
+        }
+      }
+    },
     drawCanvas () {
       this.drawRectangle() // 绘制矩形
       this.drawPath() // 绘制直线
@@ -115,6 +131,7 @@ export default {
       this.drawArc() // 绘制圆弧方法一
       this.drawArc2() // 绘制圆弧方法二
       this.drawBezier() // 绘制二次贝塞尔曲线
+      this.drawColor() // canvas 颜色
     }
 
   },
