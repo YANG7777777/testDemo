@@ -54,6 +54,12 @@
       height="100"
       style="border: 1px solid #ccc"
     ></canvas>
+    <canvas
+      id="tutorial10"
+      width="100"
+      height="100"
+      style="border: 1px solid #ccc"
+    ></canvas>
   </div>
 </template>
 
@@ -158,6 +164,15 @@ export default {
       ctx.lineTo(70, 10)
       ctx.stroke()
     },
+    drawText () {
+      const canvas = document.getElementById('tutorial10')
+      const ctx = canvas.getContext('2d')
+      ctx.font = '40px sans-serif'
+      // fillText(text, x, y[, maxWidth]) 在指定的(x, y) 位置填充指定的文本，绘制的最大宽度是可选的。
+      // strokeText(text, x, y[, maxWidth]) 在指定的(x, y) 位置绘制文本边框，绘制的最大宽度是可选的。
+      ctx.fillText('杨', 10, 40)
+      ctx.strokeText('杨', 10, 80)
+    },
     drawCanvas () {
       this.drawRectangle() // 绘制矩形
       this.drawPath() // 绘制直线
@@ -168,6 +183,7 @@ export default {
       this.drawColor() // canvas 颜色
       this.drawLineCap() // 线条末端样式
       this.drawLinejion() // 线条合并
+      this.drawText() // 文字
     }
 
   },
