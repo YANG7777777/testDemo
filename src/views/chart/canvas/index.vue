@@ -30,6 +30,12 @@
       height="100"
       style="border: 1px solid #ccc"
     ></canvas>
+    <canvas
+      id="tutorial6"
+      width="100"
+      height="100"
+      style="border: 1px solid #ccc"
+    ></canvas>
   </div>
 </template>
 
@@ -92,12 +98,23 @@ export default {
       // ctx.rect(40, 40, 5, 5)
       // ctx.fill()
     },
+    drawBezier () {
+      var canvas = document.getElementById('tutorial6')
+      var ctx = canvas.getContext('2d')
+      ctx.beginPath()
+      ctx.moveTo(10, 60) // 起始点
+      var cp1x = 40; var cp1y = 20 // 控制点
+      var x = 80; var y = 80 // 结束点
+      ctx.quadraticCurveTo(cp1x, cp1y, x, y) // 绘制二次贝塞尔曲线
+      ctx.stroke()
+    },
     drawCanvas () {
       this.drawRectangle() // 绘制矩形
       this.drawPath() // 绘制直线
       this.drawTriangle() // 绘制三角形
       this.drawArc() // 绘制圆弧方法一
       this.drawArc2() // 绘制圆弧方法二
+      this.drawBezier() // 绘制二次贝塞尔曲线
     }
 
   },
