@@ -48,6 +48,12 @@
       height="100"
       style="border: 1px solid #ccc"
     ></canvas>
+    <canvas
+      id="tutorial9"
+      width="100"
+      height="100"
+      style="border: 1px solid #ccc"
+    ></canvas>
   </div>
 </template>
 
@@ -95,8 +101,8 @@ export default {
       ctx.stroke()
     },
     drawArc2 () {
-      var canvas = document.getElementById('tutorial5')
-      var ctx = canvas.getContext('2d')
+      const canvas = document.getElementById('tutorial5')
+      const ctx = canvas.getContext('2d')
       ctx.beginPath()
       ctx.moveTo(10, 10)
       // 参数1、2：控制点1坐标   参数3、4：控制点2坐标  参数4：圆弧半径
@@ -111,17 +117,17 @@ export default {
       // ctx.fill()
     },
     drawBezier () {
-      var canvas = document.getElementById('tutorial6')
-      var ctx = canvas.getContext('2d')
+      const canvas = document.getElementById('tutorial6')
+      const ctx = canvas.getContext('2d')
       ctx.beginPath()
       ctx.moveTo(10, 60) // 起始点
-      var cp1x = 40; var cp1y = 20 // 控制点
-      var x = 80; var y = 80 // 结束点
+      const cp1x = 40; const cp1y = 20 // 控制点
+      const x = 80; const y = 80 // 结束点
       ctx.quadraticCurveTo(cp1x, cp1y, x, y) // 绘制二次贝塞尔曲线
       ctx.stroke()
     },
     drawColor () {
-      var canvas = document.getElementById('tutorial7')
+      const canvas = document.getElementById('tutorial7')
       var ctx = canvas.getContext('2d')
       for (var i = 0; i < 6; i++) {
         for (var j = 0; j < 6; j++) {
@@ -131,13 +137,25 @@ export default {
       }
     },
     drawLineCap () {
-      var canvas = document.getElementById('tutorial8')
-      var ctx = canvas.getContext('2d')
+      const canvas = document.getElementById('tutorial8')
+      const ctx = canvas.getContext('2d')
       ctx.beginPath()
       ctx.moveTo(20, 40)
       ctx.lineTo(90, 40)
       ctx.lineCap = 'round'
       ctx.lineWidth = 20
+      ctx.stroke()
+    },
+    drawLinejion () {
+      const canvas = document.getElementById('tutorial9')
+      const ctx = canvas.getContext('2d')
+      ctx.lineJoin = 'round'
+      ctx.lineWidth = 20
+      ctx.beginPath()
+      ctx.moveTo(10, 10)
+      ctx.lineTo(40, 50)
+      // ctx.moveTo(40, 50)  // 使用lineJion 写一个moveTo就好了否则不生效
+      ctx.lineTo(70, 10)
       ctx.stroke()
     },
     drawCanvas () {
@@ -149,6 +167,7 @@ export default {
       this.drawBezier() // 绘制二次贝塞尔曲线
       this.drawColor() // canvas 颜色
       this.drawLineCap() // 线条末端样式
+      this.drawLinejion() // 线条合并
     }
 
   },
