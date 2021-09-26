@@ -42,6 +42,12 @@
       height="100"
       style="border: 1px solid #ccc"
     ></canvas>
+    <canvas
+      id="tutorial8"
+      width="100"
+      height="100"
+      style="border: 1px solid #ccc"
+    ></canvas>
   </div>
 </template>
 
@@ -124,6 +130,16 @@ export default {
         }
       }
     },
+    drawLineCap () {
+      var canvas = document.getElementById('tutorial8')
+      var ctx = canvas.getContext('2d')
+      ctx.beginPath()
+      ctx.moveTo(20, 40)
+      ctx.lineTo(90, 40)
+      ctx.lineCap = 'round'
+      ctx.lineWidth = 20
+      ctx.stroke()
+    },
     drawCanvas () {
       this.drawRectangle() // 绘制矩形
       this.drawPath() // 绘制直线
@@ -132,6 +148,7 @@ export default {
       this.drawArc2() // 绘制圆弧方法二
       this.drawBezier() // 绘制二次贝塞尔曲线
       this.drawColor() // canvas 颜色
+      this.drawLineCap() // 线条末端样式
     }
 
   },
