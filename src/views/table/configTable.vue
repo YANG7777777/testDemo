@@ -19,16 +19,16 @@
               :prop="item1.prop || ''"
               :key="index1"
             >
-              <!-- <template v-if="!item1.children" slot-scope="scope"> -->
+              <template v-if="!item1.children" slot-scope="scope">
                 <!-- 编辑框组件 -->
-                <!-- <edit-cell
+                <edit-cell
                   :afterEdit="afterEdit"
                   :targetValue="targetValue"
                   v-model="scope.row[item1.prop]"
                   :can-edit="true"
-                /> -->
+                />
                 <!-- 编辑框组件 -->
-              <!-- </template> -->
+              </template>
               <template v-if="item1.children">
                 <el-table-column
                   align="center"
@@ -37,16 +37,16 @@
                   :prop="item2.prop || ''"
                   :key="index2"
                 >
-                  <!-- <template slot-scope="scope"> -->
+                  <template slot-scope="scope">
                     <!-- 编辑框组件 -->
-                    <!-- <edit-cell
+                    <edit-cell
                       :afterEdit="afterEdit"
                       :targetValue="targetValue"
                       v-model="scope.row[item2.prop]"
                       :can-edit="true"
-                    /> -->
+                    />
                     <!-- 编辑框组件 -->
-                  <!-- </template> -->
+                  </template>
                 </el-table-column>
               </template>
             </el-table-column>
@@ -59,7 +59,7 @@
 
 <script>
 import { reportConfig } from './config/editTableConfig'
-// import EditCell from '../../components/editCell'
+import EditCell from '../../components/editCell'
 export default {
   name: 'configTable',
   data () {
@@ -71,9 +71,9 @@ export default {
       targetValue: {}
     }
   },
-  // components: {
-  //   EditCell
-  // },
+  components: {
+    EditCell
+  },
   methods: {
     afterEdit (e) {
       // 1.根据返回值来发送接口修改数据
