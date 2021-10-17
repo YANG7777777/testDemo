@@ -105,6 +105,12 @@ const routes = [
         name: 'bias',
         meta: { title: 'bias', icon: 'example' },
         component: () => import(/* webpackChunkName: "bias" */ '../views/table/bias.vue')
+      },
+      {
+        path: 'configTable',
+        name: 'configTable',
+        meta: { title: 'configTable', icon: 'example' },
+        component: () => import(/* webpackChunkName: "configTable" */ '../views/table/configTable.vue')
       }
     ]
   },
