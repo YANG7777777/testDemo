@@ -131,6 +131,24 @@ const routes = [
       meta: { title: 'Canvas', icon: 'example' },
       component: () => import(/* webpackChunkName: "amap" */ '../views/chart/canvas')
     }]
+  },
+
+  {
+    path: '/tree',
+    name: 'Tree',
+    component: Layout,
+    meta: { title: '树形控件', icon: 'el-icon-location-information' },
+    children: [{
+      path: 'tree',
+      name: 'tree',
+      meta: { title: 'tree递归渲染', icon: 'example' },
+      component: () => import(/* webpackChunkName: "tree" */ '../views/tree')
+    }, {
+      name: 'Radio',
+      path: 'radioTree',
+      meta: { title: 'tree单选', icon: 'example' },
+      component: () => import(/* webpackChunkName: "amap" */ '../views/tree/radioTree')
+    }]
   }
 ]
 

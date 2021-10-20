@@ -92,7 +92,7 @@ export default {
         }
       })
       this.tree = val
-      // console.log(val)
+      console.log([...val])
       return val
     },
     handleNodeClick (data) {
