@@ -63,7 +63,6 @@ export const reportConfig = {
     qicai: '3',
     ju: '4',
     yun: '5',
-    bei: '5',
-    CanEdit: true
+    bei: '5'
   }]
 }

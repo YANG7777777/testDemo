@@ -44,7 +44,7 @@
                   :afterEdit="afterEdit"
                   :targetValue="targetValue"
                   v-model="scope.row[item1.prop]"
-                  :can-edit="item1.CanEdit"
+                  :can-edit="scope.row.row_head === '总计'? false : item1.CanEdit"
                 />
                 <!-- 编辑框组件 -->
               </template>
@@ -62,7 +62,7 @@
                       :afterEdit="afterEdit"
                       :targetValue="targetValue"
                       v-model="scope.row[item2.prop]"
-                      :can-edit="item2.CanEdit"
+                      :can-edit="scope.row.row_head === '总计'? false : item2.CanEdit"
                     />
                     <!-- 编辑框组件 -->
                   </template>
