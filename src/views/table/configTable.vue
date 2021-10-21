@@ -1,7 +1,13 @@
 <template>
   <div class="bias">
-    <el-table border :data="tableData3" style="width: 100%">
-      <el-table-column prop="date" width="120"> </el-table-column>
+    <el-table
+      border
+      :data="tableData"
+      :cell-style="tableCellStale"
+      style="width: 100%"
+      @cell-click='cellClick'
+    >
+      <el-table-column prop="row_head" width="120"></el-table-column>
       <template>
         <el-table-column
           align="center"
@@ -11,7 +17,20 @@
           :width="item.width || ''"
           :prop="item.prop || ''"
         >
-          <template v-if="item.children">
+
+          <template slot-scope="scope">
+            <!-- 编辑框组件 -->
+            <edit-cell
+              :afterEdit="afterEdit"
+              :targetValue="targetValue"
+              v-model="scope.row[item.prop]"
+              :can-edit="(scope.row.row_head === '总计' && item.prop !== 'bei')? false : item.CanEdit"
+            />
+            <!-- 当前行等于总计 并且 列不等于备注 不可编辑 -->
+            <!-- 第一层table渲染   后面类推 -->
+            <!-- 编辑框组件  -->
+          </template>
+          <template>
             <el-table-column
               align="center"
               :label="item1.label"
@@ -19,17 +38,17 @@
               :prop="item1.prop || ''"
               :key="index1"
             >
-              <template v-if="!item1.children" slot-scope="scope">
+              <template slot-scope="scope">
                 <!-- 编辑框组件 -->
                 <edit-cell
                   :afterEdit="afterEdit"
                   :targetValue="targetValue"
                   v-model="scope.row[item1.prop]"
-                  :can-edit="true"
+                  :can-edit="item1.CanEdit"
                 />
                 <!-- 编辑框组件 -->
               </template>
-              <template v-if="item1.children">
+              <template>
                 <el-table-column
                   align="center"
                   :label="item2.label"
@@ -43,7 +62,7 @@
                       :afterEdit="afterEdit"
                       :targetValue="targetValue"
                       v-model="scope.row[item2.prop]"
-                      :can-edit="true"
+                      :can-edit="item2.CanEdit"
                     />
                     <!-- 编辑框组件 -->
                   </template>
@@ -65,10 +84,11 @@ export default {
   data () {
     return {
       tableTitle: reportConfig.tableTtle,
-      tableData3: reportConfig.tableData,
+      tableData: reportConfig.tableData,
       row: '',
       column: '',
-      targetValue: {}
+      targetValue: {},
+      CanEdit: false
     }
   },
   components: {
@@ -79,41 +99,30 @@ export default {
       // 1.根据返回值来发送接口修改数据
       // 2.修改请求回来的数据
       console.log('afterEdit', e)
+    },
+    tableCellStale ({ row, column, rowIndex, columnIndex }) { // 表格背景颜色样式
+      if ((row.row_head === '总计' && columnIndex !== 9) || columnIndex === 5) {
+        return {
+          background: '#ccc'
+        }
+      }
+    },
+    summaryFun () { // 表头总计数据
+      const tools = {
+        row_head: '总计',
+        sum: ''
+      }
+      this.tableData.unshift(tools)
+    },
+    cellClick (row, column, cell, event) { // 单元格点击事件
+      console.log(row, column)
+      if (row.row_head === '总计') {
+        console.log(123)
+      }
     }
-    // cellClick(row, column, cell, event) {
-    //   this.row = row;
-    //   this.column = column;
-    // },
-    // tableCellStyle({ row, column, rowIndex, columnIndex }) {
-    //   if (row.province === "河南" && columnIndex === 2) {
-    //     return {
-    //       background: "#eceb3c",
-    //     };
-    //   } else if (row.province === "河北" && columnIndex === 2) {
-    //     return {
-    //       background: "blue",
-    //       color: "#000",
-    //     };
-    //   } else if (row.province === "北京" && columnIndex === 2) {
-    //     return {
-    //       background: "red",
-    //     };
-    //   } else if (row.province === "上海" && columnIndex === 2) {
-    //     return {
-    //       background: "green",
-    //       color: "#000",
-    //     };
-    //   }
-    //   if (this.row === row && this.column === column) {
-    //     // console.log(12345)
-    //     return {
-    //       background: "pink",
-    //     };
-    //   } else {
-    //     return {
-    //       background: "#fff",
-    //     };
-    //   }
+  },
+  mounted () {
+    this.summaryFun()
   }
 }
 </script>
@@ -121,7 +130,7 @@ export default {
 <style lang="less">
 // 不加scope属性才能生效
 .el-table thead.is-group th {
-  background: #ccc;
+  background: #f0f0f0 !important;
 }
 .el-table thead.is-group tr:first-of-type th:first-of-type:before {
   content: "日期";
@@ -146,7 +155,7 @@ export default {
   left: 0;
   width: 152px;
   height: 1px;
-  background-color: #ebeef5;
+  background-color: #ccc;
   display: block;
   text-align: center;
   transform: rotate(38deg);

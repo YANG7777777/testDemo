@@ -41,7 +41,7 @@ export default {
      */
     CanEdit: {
       type: Boolean,
-      default: true
+      default: false
     },
     /**
      * 格式化函数
@@ -83,7 +83,7 @@ export default {
      * 单击开始编辑
      */
     beginEdit () {
-      this.editStatus = true
+      this.editStatus = this.CanEdit
       setTimeout(() => {
         this.$refs.input.focus()
       }, 1)

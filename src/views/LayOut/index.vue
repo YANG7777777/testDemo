@@ -98,7 +98,7 @@ body {
 }
 
 .el-main {
-  background-color: #E9EEF3;
+  background-color: #ccc;
   color: #333;
 }
 </style>
