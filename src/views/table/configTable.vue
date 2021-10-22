@@ -1,11 +1,15 @@
 <template>
   <div class="bias">
+    <div style="text-align: right">
+      <el-button @click="beginEdit" type="primary">编辑</el-button>
+      <el-button @click="saveEdit" type="success">保存</el-button>
+    </div>
     <el-table
       border
       :data="tableData"
       :cell-style="tableCellStale"
       style="width: 100%"
-      @cell-click='cellClick'
+      @cell-click="cellClick"
     >
       <el-table-column prop="row_head" width="120"></el-table-column>
       <template>
@@ -17,7 +21,6 @@
           :width="item.width || ''"
           :prop="item.prop || ''"
         >
-
           <template slot-scope="scope">
             <!-- 编辑框组件 -->
             <edit-cell
@@ -25,6 +28,7 @@
               :targetValue="targetValue"
               v-model="scope.row[item.prop]"
               :can-edit="(scope.row.row_head === '总计' && item.prop !== 'bei')? false : item.CanEdit"
+              :isEditTable="isEditTable"
             />
             <!-- 当前行等于总计 并且 列不等于备注 不可编辑 -->
             <!-- 第一层table渲染   后面类推 -->
@@ -45,6 +49,7 @@
                   :targetValue="targetValue"
                   v-model="scope.row[item1.prop]"
                   :can-edit="scope.row.row_head === '总计'? false : item1.CanEdit"
+                  :isEditTable="isEditTable"
                 />
                 <!-- 编辑框组件 -->
               </template>
@@ -63,6 +68,7 @@
                       :targetValue="targetValue"
                       v-model="scope.row[item2.prop]"
                       :can-edit="scope.row.row_head === '总计'? false : item2.CanEdit"
+                      :isEditTable="isEditTable"
                     />
                     <!-- 编辑框组件 -->
                   </template>
@@ -88,17 +94,23 @@ export default {
       row: '',
       column: '',
       targetValue: {},
-      CanEdit: false
+      CanEdit: false, // 组件是否可编辑
+      isEditTable: false // table表格是否能点击
+
     }
   },
   components: {
     EditCell
   },
   methods: {
+    beginEdit () { // 点击编辑按钮 开始编辑
+      this.isEditTable = true
+    },
+    saveEdit () { // 点击保存按钮
+      this.isEditTable = false
+    },
     afterEdit (e) {
-      // 1.根据返回值来发送接口修改数据
-      // 2.修改请求回来的数据
-      console.log('afterEdit', e)
+      this.sumFunction(e.columnName, e.rowName)
     },
     tableCellStale ({ row, column, rowIndex, columnIndex }) { // 表格背景颜色样式
       if ((row.row_head === '总计' && columnIndex !== 9) || columnIndex === 5) {
@@ -107,22 +119,23 @@ export default {
         }
       }
     },
-    summaryFun () { // 表头总计数据
-      const tools = {
-        row_head: '总计',
-        sum: ''
-      }
-      this.tableData.unshift(tools)
-    },
     cellClick (row, column, cell, event) { // 单元格点击事件
-      console.log(row, column)
-      if (row.row_head === '总计') {
-        console.log(123)
-      }
+      // 计算列总计
+      const columnName = column.property
+      const rowName = row.row_head
+      this.targetValue = { columnName, rowName }
+    },
+    sumFunction (columnName, rowName) { // 计算列
+      let columnCount = 0 // 列的总计
+      this.tableData.forEach((item, index) => {
+        if (index !== 0) {
+          columnCount += Number(item[columnName])
+        }
+      })
+      this.tableData[0][columnName] = columnCount
     }
   },
   mounted () {
-    this.summaryFun()
   }
 }
 </script>

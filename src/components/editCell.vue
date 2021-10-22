@@ -2,8 +2,10 @@
   <div class="editCell">
     <div class="canEdit" v-if="CanEdit" @click="beginEdit">
       <label v-show="!editStatus">
-        <span v-if="this.value!== null && this.value !== undefined && this.value !== ''">{{ value }}{{this.suffix}}</span>
-        <span v-else style="padding-left: 100%;padding-top: 100%;"/>
+        <span
+          v-if="this.value!== null && this.value !== undefined && this.value !== ''"
+        >{{ value }}{{this.suffix}}</span>
+        <span v-else style="padding-left: 100%;padding-top: 100%;" />
       </label>
       <label v-show="editStatus">
         <input
@@ -37,9 +39,16 @@ export default {
       type: Object
     },
     /**
-     * 是否可编辑
+     * 是否可编辑单元格
      */
     CanEdit: {
+      type: Boolean,
+      default: false
+    },
+    /**
+     * 是否可编辑table
+     */
+    isEditTable: {
       type: Boolean,
       default: false
     },
@@ -57,7 +66,7 @@ export default {
      */
     afterEdit: {
       type: Function,
-      default: () => {}
+      default: () => { }
     },
     /**
      * 是否初始格式化
@@ -83,6 +92,7 @@ export default {
      * 单击开始编辑
      */
     beginEdit () {
+      if (!this.isEditTable) { return }
       this.editStatus = this.CanEdit
       setTimeout(() => {
         this.$refs.input.focus()
@@ -98,7 +108,7 @@ export default {
       this.editData(value)
       this.closeEditStatus(value)
       if (this.value === value) { return } // 增加判断如果值没有变化 则不执行下面的函数，无需修改
-      this.afterEdit({ ...this.targetValue, value })
+      this.afterEdit(this.targetValue)
     },
 
     /**

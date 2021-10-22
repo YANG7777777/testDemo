@@ -53,7 +53,31 @@ export const reportConfig = {
   }
   ],
   tableData: [{
+    row_head: '总计',
+    xiaozu: '2',
+    bangongs: '8',
+    huodongshi1: '12',
+    huodongshi2: '8',
+    huodongshi3: '6',
+    zongji: '26',
+    qicai: '6',
+    ju: '8',
+    yun: '10',
+    bei: '10'
+  }, {
     row_head: '测试数据',
+    xiaozu: '1',
+    bangongs: '4',
+    huodongshi1: '6',
+    huodongshi2: '4',
+    huodongshi3: '3',
+    zongji: '13',
+    qicai: '3',
+    ju: '4',
+    yun: '5',
+    bei: '5'
+  }, {
+    row_head: '测试数据二',
     xiaozu: '1',
     bangongs: '4',
     huodongshi1: '6',
