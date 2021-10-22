@@ -126,6 +126,7 @@ export default {
       this.targetValue = { columnName, rowName }
     },
     sumFunction (columnName, rowName) { // 计算列
+      // console.log(rowName)
       let columnCount = 0 // 列的总计
       this.tableData.forEach((item, index) => {
         if (index !== 0) {
@@ -133,6 +134,15 @@ export default {
         }
       })
       this.tableData[0][columnName] = columnCount
+
+      // 行计算
+      // const rowCount = 0
+      this.tableData.forEach((item, index) => {
+        console.log(123, item)
+        if (item.row_head === rowName) {
+          item.zongji = Number(item.huodongshi1) + Number(item.huodongshi2) + Number(item.huodongshi3)
+        }
+      })
     }
   },
   mounted () {
