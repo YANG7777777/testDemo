@@ -108,6 +108,7 @@ export default {
     },
     saveEdit () { // 点击保存按钮
       this.isEditTable = false
+      console.log(this.tableData)
     },
     afterEdit (e) {
       this.sumFunction(e.columnName, e.rowName)
@@ -126,7 +127,6 @@ export default {
       this.targetValue = { columnName, rowName }
     },
     sumFunction (columnName, rowName) { // 计算列
-      // console.log(rowName)
       let columnCount = 0 // 列的总计
       this.tableData.forEach((item, index) => {
         if (index !== 0) {
@@ -138,11 +138,19 @@ export default {
       // 行计算
       // const rowCount = 0
       this.tableData.forEach((item, index) => {
-        console.log(123, item)
         if (item.row_head === rowName) {
           item.zongji = Number(item.huodongshi1) + Number(item.huodongshi2) + Number(item.huodongshi3)
         }
       })
+
+      // 标灰列计算
+      let garyCount = 0
+      this.tableData.forEach((item, index) => {
+        if (index !== 0) {
+          garyCount += Number(item.zongji)
+        }
+      })
+      this.tableData[0].zongji = garyCount
     }
   },
   mounted () {
