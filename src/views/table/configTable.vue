@@ -65,7 +65,7 @@
                     <!-- 编辑框组件 -->
                     <edit-cell
                       :afterEdit="afterEdit"
-                      :targetValue="targetValue"
+                      :targetValue="{...targetValue}"
                       v-model="scope.row[item2.prop]"
                       :can-edit="scope.row.row_head === '总计'? false : item2.CanEdit"
                       :isEditTable="isEditTable"
@@ -96,7 +96,6 @@ export default {
       targetValue: {},
       CanEdit: false, // 组件是否可编辑
       isEditTable: false // table表格是否能点击
-
     }
   },
   components: {
