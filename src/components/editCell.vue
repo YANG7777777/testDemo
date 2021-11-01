@@ -151,6 +151,14 @@ export default {
 </script>
 
 <style scoped>
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+}
 .editCell {
   height: 100%;
   width: 100%;
