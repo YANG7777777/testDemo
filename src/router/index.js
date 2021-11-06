@@ -40,6 +40,19 @@ const routes = [
     }]
   },
   {
+    path: '/changeBox',
+    component: Layout,
+    redirect: '/changeBox/changeBox',
+    name: 'changeBox',
+    meta: { title: 'changeBox', icon: 'el-icon-s-home' },
+    children: [{
+      path: 'changeBox',
+      name: 'changeBox',
+      meta: { title: 'changeBox', icon: 'example' },
+      component: () => import(/* webpackChunkName: "about" */ '../views/changeBox/index.vue')
+    }]
+  },
+  {
     path: '/Map',
     component: Layout,
     redirect: '/Map/mapMutations',
