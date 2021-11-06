@@ -110,7 +110,42 @@ export default {
       console.log(this.tableData)
     },
     afterEdit (e) {
+      // console.log(['bei', 'xiaozu'].indexOf(e.columnName))
+      if (e.columnName === 'bei') { // 备注列
+        return
+      } else if (e.columnName === 'xiaozu') { // 是否列
+        this.tableData.forEach(item => {
+          if (e.rowName === item.row_head) {
+            if (['是', '否'].indexOf(item[e.columnName]) < 0) {
+              item[e.columnName] = ''
+              this.$message('请输入  “是”  或  “否”')
+            }
+            console.log('dddddd', item[e.columnName])
+          }
+        })
+        return
+      } else if (['huodongshi1', 'huodongshi2', 'huodongshi3'].indexOf(e.columnName) !== -1) {
+        this.tableData.forEach(item => {
+          if (e.rowName === item.row_head) {
+            // console.log('dddddd', this.hasDot(item[e.columnName]))
+            item[e.columnName] = this.hasDot(item[e.columnName])
+          }
+        })
+      } else {
+        this.tableData.forEach(item => {
+          if (e.rowName === item.row_head) {
+            item[e.columnName] = parseInt(item[e.columnName])
+          }
+        })
+      }
+
       this.sumFunction(e.columnName, e.rowName)
+    },
+    hasDot (num) {
+      // 保留4位小数点过滤器 不四舍五入
+      var toFixedNum = Number(num).toFixed(5)
+      var realVal = toFixedNum.substring(0, toFixedNum.toString().length - 1)
+      return realVal
     },
     tableCellStale ({ row, column, rowIndex, columnIndex }) { // 表格背景颜色样式
       if ((row.row_head === '总计' && columnIndex !== 9) || columnIndex === 5) {
@@ -160,7 +195,7 @@ export default {
 <style lang="less">
 // 不加scope属性才能生效
 .el-table thead.is-group th {
-  background: #f0f0f0 !important;
+  background: #ccc !important;
 }
 .el-table thead.is-group tr:first-of-type th:first-of-type:before {
   content: "日期";

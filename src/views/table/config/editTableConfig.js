@@ -2,7 +2,7 @@ export const reportConfig = {
   tableTtle: [{
     label: '委员会',
     children: [{
-      label: '居委会小组',
+      label: '是否开展劳模疗休养',
       prop: 'xiaozu',
       CanEdit: true
     },
@@ -54,7 +54,7 @@ export const reportConfig = {
   ],
   tableData: [{
     row_head: '总计',
-    xiaozu: '2',
+    xiaozu: '',
     bangongs: '8',
     huodongshi1: '12',
     huodongshi2: '8',

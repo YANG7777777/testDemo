@@ -10,7 +10,7 @@
       <label v-show="editStatus">
         <input
           class="inputClass"
-          :type="this.targetValue.columnName === 'bei'? 'text': 'number'"
+          :type="(this.targetValue.columnName === 'bei' ||this.targetValue.columnName === 'xiaozu')? 'text': 'number'"
           ref="input"
           v-on:keyup.13="loseFocus"
           :value="value"
@@ -116,9 +116,6 @@ export default {
      * @param value
      */
     editData (value) {
-      console.log(value)
-      const isNumber = Number(value)
-      console.log('EEE', isNumber)
       this.$emit('input', value)
     },
 
