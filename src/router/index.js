@@ -111,6 +111,12 @@ const routes = [
         name: 'configTable',
         meta: { title: 'configTable', icon: 'example' },
         component: () => import(/* webpackChunkName: "configTable" */ '../views/table/configTable.vue')
+      },
+      {
+        path: 'CheckBoxTable',
+        name: 'CheckBoxTable',
+        meta: { title: 'CheckBoxTable', icon: 'example' },
+        component: () => import(/* webpackChunkName: "CheckBoxTable" */ '../views/table/checkboxTable.vue')
       }
     ]
   },
