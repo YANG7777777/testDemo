@@ -27,6 +27,19 @@ const routes = [
 
   },
   {
+    path: '/Date',
+    component: Layout,
+    redirect: '/Date/dates',
+    name: 'Date',
+    meta: { title: '日期控件', icon: 'el-icon-s-home' },
+    children: [{
+      path: 'dates',
+      name: 'dates',
+      meta: { title: 'dates', icon: 'example' },
+      component: () => import(/* webpackChunkName: "about" */ '../views/Date/dates/index.vue')
+    }]
+  },
+  {
     path: '/Map',
     component: Layout,
     redirect: '/Map/mapMutations',
