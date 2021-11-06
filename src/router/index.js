@@ -53,6 +53,19 @@ const routes = [
     }]
   },
   {
+    path: '/videoPlay',
+    component: Layout,
+    redirect: '/videoPlay/videoPlay',
+    name: 'videoPlay',
+    meta: { title: 'videoPlay', icon: 'el-icon-s-home' },
+    children: [{
+      path: 'videoPlay',
+      name: 'videoPlay',
+      meta: { title: 'videoPlay', icon: 'example' },
+      component: () => import(/* webpackChunkName: "about" */ '../views/videoPlay/index.vue')
+    }]
+  },
+  {
     path: '/Map',
     component: Layout,
     redirect: '/Map/mapMutations',
