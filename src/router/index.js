@@ -53,6 +53,19 @@ const routes = [
     }]
   },
   {
+    path: '/pdfUse',
+    component: Layout,
+    redirect: '/pdfUse/pdfUse',
+    name: 'pdfUse',
+    meta: { title: 'pdfUse', icon: 'el-icon-s-home' },
+    children: [{
+      path: 'pdfUse',
+      name: 'pdfUse',
+      meta: { title: 'pdfUse', icon: 'example' },
+      component: () => import(/* webpackChunkName: "about" */ '../views/pdfUse/index.vue')
+    }]
+  },
+  {
     path: '/videoPlay',
     component: Layout,
     redirect: '/videoPlay/videoPlay',

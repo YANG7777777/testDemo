@@ -5,6 +5,8 @@ import store from './store'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 import BaiduMap from 'vue-baidu-map'
+import vueToPdf from 'vue-to-pdf'
+Vue.use(vueToPdf)
 
 Vue.config.productionTip = false
 Vue.use(ElementUI)

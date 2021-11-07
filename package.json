@@ -14,6 +14,7 @@
     "vue": "^2.6.11",
     "vue-baidu-map": "^0.21.22",
     "vue-router": "^3.2.0",
+    "vue-to-pdf": "^1.0.0",
     "vue-video-player": "^5.0.2",
     "vuex": "^3.4.0"
   },
