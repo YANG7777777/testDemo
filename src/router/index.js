@@ -207,6 +207,18 @@ const routes = [
       meta: { title: 'tree单选', icon: 'example' },
       component: () => import(/* webpackChunkName: "amap" */ '../views/tree/radioTree')
     }]
+  },
+  {
+    path: '/Tabs',
+    name: 'Tabs',
+    component: Layout,
+    meta: { title: 'Tabs', icon: 'el-icon-location-information' },
+    children: [{
+      path: 'tabs',
+      name: 'tabs',
+      meta: { title: 'tabs', icon: 'example' },
+      component: () => import(/* webpackChunkName: "tree" */ '../views/tabs')
+    }]
   }
 ]
 
