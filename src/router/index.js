@@ -219,6 +219,35 @@ const routes = [
       meta: { title: 'tabs', icon: 'example' },
       component: () => import(/* webpackChunkName: "tree" */ '../views/tabs')
     }]
+  },
+  {
+    path: '/Tabs',
+    name: 'Tabs',
+    component: Layout,
+    meta: { title: 'Tabs', icon: 'el-icon-location-information' },
+    children: [{
+      path: 'tabs',
+      name: 'tabs',
+      meta: { title: 'tabs', icon: 'example' },
+      component: () => import(/* webpackChunkName: "tree" */ '../views/tabs')
+    }]
+  }, {
+    path: '/reLink',
+    name: 'reLink',
+    component: Layout,
+    meta: { title: 'reLink', icon: 'el-icon-location-information' },
+    children: [{
+      path: 'reLink',
+      name: 'reLink',
+      meta: { title: 'reLink', icon: 'example' },
+      component: () => import(/* webpackChunkName: "tree" */ '../views/routerLink')
+    }, {
+      path: 'targetView',
+      name: 'targetView',
+      hidden: true,
+      meta: { title: 'targetView', icon: 'example' },
+      component: () => import(/* webpackChunkName: "tree" */ '../views/routerLink/targetView')
+    }]
   }
 ]
 
