@@ -1,30 +1,43 @@
 <template>
-  <div class="radioTree">
-    <p>单选树形控件</p>
-    <el-tree
-      ref="tree"
-      class="tree"
-      :node-key="'id'"
-      :empty-text="' '"
-      :data="treeData"
-      show-checkbox
-      check-strictly
-      :expand-on-click-node="false"
-      @check-change="selectTreeNode"
-    >
-      <span slot-scope="{ node }" class="custom-tree-node">
-        <span class="title">{{ node.label }}</span>
-      </span>
-    </el-tree>
+  <div>
+    <el-button type="primary" @click="getTreeData">选择数据</el-button>
+    <el-row>
+      <el-col :span="24">选中的数据{{choseData}}</el-col>
+    </el-row>
+    <dialogTreeBack
+      :dialogVisible="dialogVisible"
+      :closeDialog="closeDialog"
+      :treeData="treeData"
+      :setChose="setChose"
+      :backChose="backChose"
+    ></dialogTreeBack>
   </div>
 </template>
 
 <script>
+
+import dialogTreeBack from '@/components/dialogTreeBack'
+
 export default {
-  name: 'radioTree',
+  name: 'backTree',
   data () {
     return {
-      treeData: [{
+      dialogVisible: false,
+      treeData: [],
+      choseData: [],
+      backChose: []
+    }
+  },
+  components: {
+    dialogTreeBack
+  },
+  methods: {
+    closeDialog () {
+      this.dialogVisible = false
+    },
+    getTreeData () {
+      this.dialogVisible = true
+      this.treeData = [{
         id: 1,
         label: '一级 1',
         children: [{
@@ -69,18 +82,13 @@ export default {
           }]
         }]
       }]
+      this.backChose = this.choseData.map(c => c.id) // 遍历获取选中的id传递给子组件
+    },
+    setChose (v) {
+      this.choseData = v
+      this.closeDialog()
     }
-  },
-  methods: {
-    selectTreeNode (data, checked, tree) {
-      if (checked) {
-        this.currentNodeData = data
-        this.$refs.tree.setCheckedNodes([data])
-      }
-    }
-
   }
-
 }
 </script>
 

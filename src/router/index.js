@@ -109,11 +109,6 @@ const routes = [
         meta: { title: 'extend', icon: 'example' },
         component: () => import(/* webpackChunkName: "extend" */ '../views/tools/index.vue')
       }, {
-        path: 'tree',
-        name: 'tree',
-        meta: { title: 'tree', icon: 'example' },
-        component: () => import(/* webpackChunkName: "tree" */ '../views/tree')
-      }, {
         path: 'filters',
         name: 'Filters',
         meta: { title: 'filters', icon: 'example' },
@@ -206,6 +201,11 @@ const routes = [
       path: 'radioTree',
       meta: { title: 'tree单选', icon: 'example' },
       component: () => import(/* webpackChunkName: "amap" */ '../views/tree/radioTree')
+    }, {
+      name: 'backTree',
+      path: 'backTree',
+      meta: { title: 'backTree', icon: 'example' },
+      component: () => import(/* webpackChunkName: "amap" */ '../views/tree/backTree')
     }]
   },
   {
