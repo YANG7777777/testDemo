@@ -9,6 +9,7 @@
           node-key="id"
           show-checkbox
           :default-checked-keys="backChose"
+          :default-expanded-keys="backChose"
         ></el-tree>
       </div>
       <div slot="footer">
