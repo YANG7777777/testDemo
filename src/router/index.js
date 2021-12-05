@@ -238,6 +238,17 @@ const routes = [
       component: () => import(/* webpackChunkName: "tree" */ '../views/tabs')
     }]
   }, {
+    path: '/Cookies',
+    name: 'Cookies',
+    component: Layout,
+    meta: { title: 'Cookies', icon: 'el-icon-location-information' },
+    children: [{
+      path: 'Cookies',
+      name: 'Cookies',
+      meta: { title: 'Cookies', icon: 'example' },
+      component: () => import(/* webpackChunkName: "tree" */ '../views/cookies')
+    }]
+  }, {
     path: '/reLink',
     name: 'reLink',
     component: Layout,
