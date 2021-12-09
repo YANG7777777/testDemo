@@ -7,7 +7,6 @@ import 'element-ui/lib/theme-chalk/index.css'
 import BaiduMap from 'vue-baidu-map'
 import vueToPdf from 'vue-to-pdf'
 Vue.use(vueToPdf)
-alert(process.env.VUE_APP_BASE_URL)
 Vue.config.productionTip = false
 Vue.use(ElementUI)
 Vue.use(BaiduMap, {
