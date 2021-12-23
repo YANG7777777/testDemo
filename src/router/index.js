@@ -227,6 +227,24 @@ const routes = [
     }]
   },
   {
+    path: '/JumpRouter',
+    name: 'JumpRouter',
+    component: Layout,
+    meta: { title: 'JumpRouter', icon: 'el-icon-location-information' },
+    children: [{
+      path: 'Jump',
+      name: 'Jump',
+      meta: { title: 'Jump', icon: 'example' },
+      component: () => import(/* webpackChunkName: "tree" */ '../views/JumpRouter')
+    },
+    {
+      path: 'targetJump',
+      name: 'targetJump',
+      meta: { title: 'targetJump', icon: 'example' },
+      component: () => import(/* webpackChunkName: "tree" */ '../views/JumpRouter/targetJump')
+    }]
+  },
+  {
     path: '/Tabs',
     name: 'Tabs',
     component: Layout,
