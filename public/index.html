@@ -1,17 +1,55 @@
 <!DOCTYPE html>
 <html lang="">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <link rel="icon" href="<%= BASE_URL %>favicon.ico">
-    <title><%= htmlWebpackPlugin.options.title %></title>
-  </head>
-  <body>
-    <noscript>
-      <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
-    </noscript>
-    <div id="app"></div>
-    <!-- built files will be auto injected -->
-  </body>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <link rel="icon" href="<%= BASE_URL %>favicon.ico">
+  <title><%= htmlWebpackPlugin.options.title %></title>
+</head>
+
+<body>
+  <noscript>
+    <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled.
+      Please enable it to continue.</strong>
+  </noscript>
+  <!-- <div id="app"></div> -->
+  <!-- built files will be auto injected -->
+  <div id="demo"></div>
+</body>
+<SCRIPT>
+  let text = '[呲牙[握手]hahhah[笑]'
+
+  let arr = [{
+      url: '101.jpg',
+      name: '[握手]'
+    },
+    {
+      url: '103.jpg',
+      name: '[笑]'
+    },
+    {
+      url: '131.jpg',
+      name: '[呲牙]'
+    }
+  ]
+
+  for (let i = 0; i < arr.length; i++) {
+    const str = arr[i].name
+
+    if (text.lastIndexOf(str)) {
+      text = text.replaceAll(str, arr[i].url);
+    }
+  }
+
+  function img(url) {
+    return '<img src=' + `<%= BASE_URL %>favicon.ico` + ' alt="" />'
+  }
+
+  console.log(text);
+
+  document.getElementById('demo').innerHTML = text
+</SCRIPT>
+
 </html>
