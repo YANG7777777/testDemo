@@ -4,7 +4,7 @@
       <el-header style="background-color: #304156;">
         <headerItem></headerItem>
       </el-header>
-      <el-container style="height: 650px">
+      <el-container class="container_box">
         <el-aside
           width="201px"
           style="background-color:#304156"
@@ -91,7 +91,9 @@ body {
   background-color: #B3C0D1;
   color: #333;
 } */
-
+.container_box {
+  height: calc(100vh - 60px);
+}
 .el-aside {
   background-color: #D3DCE6;
   color: #333;
