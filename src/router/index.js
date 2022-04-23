@@ -212,6 +212,11 @@ const routes = [
       path: 'backTree',
       meta: { title: 'backTree', icon: 'example' },
       component: () => import(/* webpackChunkName: "amap" */ '../views/tree/backTree')
+    }, {
+      name: 'rollTree',
+      path: 'rollTree',
+      meta: { title: 'rollTree', icon: 'example' },
+      component: () => import(/* webpackChunkName: "amap" */ '../views/tree/rollTree')
     }]
   },
   {
