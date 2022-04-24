@@ -39,7 +39,7 @@ export default {
                 children: [{
                     label: '二级 1-1',
                     children: [{
-                        label: '三级:用清晰的层级结构展示信息，可展开或折叠。'
+                        label: '12213901723126348264871086189265182365891650185612'
                     }]
                 }]
             }, {
@@ -200,7 +200,10 @@ export default {
         margin: 20px;
         background-color: white;
         ::v-deep .el-tree-node {
-            white-space: normal;
+            white-space: normal; // 汉字折行
+            word-break:break-all;  // 纯英文或数字折行
+	        word-wrap:break-word;  // 纯英文或数字折行
+
             padding: 0 2px;
 
             .el-tree-node__content {
