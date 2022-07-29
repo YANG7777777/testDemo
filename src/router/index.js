@@ -125,7 +125,14 @@ const routes = [
       path: 'form',
       meta: { title: 'form', icon: 'example' },
       component: () => import(/* webpackChunkName: "form" */ '../views/form')
-    }]
+    },
+    {
+      name: 'cascade',
+      path: 'cascade',
+      meta: { title: '级联', icon: 'example' },
+      component: () => import(/* webpackChunkName: "form" */ '../views/form/cascade.vue')
+    }
+  ]
   },
 
   {
