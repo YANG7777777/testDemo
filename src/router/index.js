@@ -224,6 +224,11 @@ const routes = [
       path: 'rollTree',
       meta: { title: 'rollTree', icon: 'example' },
       component: () => import(/* webpackChunkName: "amap" */ '../views/tree/rollTree')
+    },{
+      name: 'lazyTree',
+      path: 'lazyTree',
+      meta: { title: '懒加载tree', icon: 'example' },
+      component: () => import(/* webpackChunkName: "amap" */ '../views/tree/lazyTree')
     }]
   },
   {
