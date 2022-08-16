@@ -3,10 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
-    "build:develop": "vue-cli-service build --mode develop",
-    "build:development": "vue-cli-service build --mode development",
+    "serve": "cross-env NODE_ENV=serve node config.js && vue-cli-service serve",
+    "build": "cross-env NODE_ENV=build node config.js && vue-cli-service build",
+    "build:develop": "cross-env NODE_ENV=develop node config.js && vue-cli-service build --mode develop",
+    "build:development": "cross-env NODE_ENV=development node config.js && vue-cli-service build --mode development",
+    "build:production": "cross-env NODE_ENV=production node config.js && vue-cli-service build --mode production",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
@@ -30,6 +31,7 @@
     "@vue/cli-service": "~4.5.0",
     "@vue/eslint-config-standard": "^5.1.2",
     "babel-eslint": "^10.1.0",
+    "cross-env": "^7.0.3",
     "eslint": "^6.7.2",
     "eslint-plugin-import": "^2.20.2",
     "eslint-plugin-node": "^11.1.0",
