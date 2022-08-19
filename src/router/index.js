@@ -229,7 +229,14 @@ const routes = [
       path: 'lazyTree',
       meta: { title: '懒加载tree', icon: 'example' },
       component: () => import(/* webpackChunkName: "amap" */ '../views/tree/lazyTree')
-    }]
+    },
+    {
+      name: 'handleTree',
+      path: 'handleTree',
+      meta: { title: '操作tree', icon: 'example'},
+      component: () => import('../views/tree/handleTree')
+    }
+  ]
   },
   {
     path: '/Tabs',
