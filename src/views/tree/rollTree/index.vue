@@ -73,7 +73,8 @@ export default {
                 children: 'children',
                 label: 'label'
             },
-            showTitle: false
+            showTitle: false,
+            tooltipTitle: ''
         };
     },
 
@@ -93,7 +94,8 @@ export default {
             } else {
                 this.showTitle = true;
             }
-        }
+        },
+        handleNodeClick() {}
     },
 };
 </script>
