@@ -235,6 +235,12 @@ const routes = [
       path: 'handleTree',
       meta: { title: '操作tree', icon: 'example'},
       component: () => import('../views/tree/handleTree')
+    },
+    {
+      name: 'strictlyTree',
+      path: 'strictlyTree',
+      meta: { title: 'strictlyTree', icon: 'example'},
+      component: () => import('../views/tree/strictlyTree')
     }
   ]
   },
