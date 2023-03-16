@@ -10,7 +10,7 @@
                 node-key="id"
                 :props="defaultProps"
                 :render-content="rendContent"
-                :default-checked-keys="[]"
+                :default-checked-keys="[1,4,9]"
                 :default-expanded-keys="[1]"
             >
             </el-tree>
@@ -39,28 +39,39 @@ export default {
                 {
                     id: 1,
                     label: "一级 1",
+                    disabled: false,
                     children: [
                         {
                             id: 4,
                             pid: 1,
                             label: "二级 1-1",
+                            disabled: false,
                             children: [
                                 {
                                     id: 9,
                                     pid: 4,
                                     label: "三级 1-1-1",
+                                    disabled: false,
                                     children: [
                                         {
                                             id: 94,
                                             pid: 9,
                                             label:"四级 1-1-1",
+                                            disabled: false,
+                                        },
+                                         {
+                                            id: 95,
+                                            pid: 9,
+                                            label:"四级 1-1-2",
+                                            disabled: false,
                                         }
                                     ]
                                 },
                                 {
                                     id: 10,
                                     pid: 4,
-                                    label: "三级 1-1-2"
+                                    label: "三级 1-1-2",
+                                    disabled: false,
                                 }
                             ]
                         },
@@ -68,16 +79,19 @@ export default {
                             id: 42,
                             pid: 1,
                             label: "二级 1-2",
+                            disabled: false,
                             children: [
                                 {
                                     id: 92,
                                     pid: 42,
-                                    label: "三级 1-2-1"
+                                    label: "三级 1-2-1",
+                                    disabled: false,
                                 },
                                 {
                                     id: 102,
                                     pid: 42,
-                                    label: "三级 1-2-2"
+                                    label: "三级 1-2-2",
+                                    disabled: false,
                                 }
                             ]
                         }
@@ -92,19 +106,27 @@ export default {
                 label: "name",
                 children: "zones"
             },
-            hightdata: [], // 高亮显示的id数组
+            hightdata: [1,4,9], // 高亮显示的id数组
         };
     },
     methods: {
         // 设置高亮的 效果
         rendContent(h, { node, data }) {
              console.log('rendContent',node);
-            //  判断与树形结构数据中的值一样的就是需要高亮的  && 当前不是叶子节点
-            if (this.hightdata.indexOf(data.id) !== -1 && !node.isLeaf) {
+            
+            //  判断与树形结构数据中的值一样的就是需要高亮的  && 当前不是叶子节点 && 当前节点下有选中节点
+            if (this.hightdata.indexOf(data.id) !== -1 && !node.isLeaf && this.isChildChecked(node.childNodes)) {
                 return <span class="hightli">{data.label}</span>;
             } else {
                 return <span>{data.label}</span>;
             }
+        },
+        // 反显时当前节点下 有没有选中的节点
+        isChildChecked(childNodes) {
+            let hasChildChecked = childNodes.some(item => {
+                return item.checked
+            });
+            return hasChildChecked
         },
         handleCheck(data, { checkedKeys }) {
             // 这里可以设置父节点高亮  当前节点是否是
