@@ -76,6 +76,12 @@ const routes = [
       name: 'videoPlay',
       meta: { title: 'videoPlay', icon: 'example' },
       component: () => import(/* webpackChunkName: "about" */ '../views/videoPlay/index.vue')
+    },
+    {
+      path: 'videoLinkPlay',
+      name: 'videoLinkPlay',
+      meta: { title: 'videoLinkPlay', icon: 'example' },
+      component: () => import(/* webpackChunkName: "about" */ '../views/videoPlay/videoLinkPlay.vue')
     }]
   },
   {

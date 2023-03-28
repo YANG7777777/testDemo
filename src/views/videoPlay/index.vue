@@ -6,8 +6,8 @@
       :playsinline="true"
       :options="playerOptions"
     ></video-player>
-    <!-- <video width="400" height="600" src="http://baidu.com/gongfu.mp4" controls="controls"></video> -->
-    <!-- <video width="400" height="600" src="file:///storage/emulated/0/video.mp4" controls="controls"></video> -->
+    <!-- <video width="400" height="600" :src="require('@/assets/gongfu.mp4')" controls="controls"></video> -->
+    <!-- <video width="400" height="600" src="https://api.dogecloud.com/player/get.mp4" controls="controls"></video> -->
   </div>
 </template>
 
