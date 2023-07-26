@@ -7762,6 +7762,11 @@
     "ajv" "^6.12.4"
     "ajv-keywords" "^3.5.2"
 
+"screenfull@^4.2.0":
+  "integrity" "sha512-qpyI9XbwuMJElWRP5vTgxkFAl4k7HpyhIqBFOZEwX9QBXn0MAuRSpn7LOc6/4CeSwoz61oBu1VPV+2fbIWC+5Q=="
+  "resolved" "https://registry.npmjs.org/screenfull/-/screenfull-4.2.0.tgz"
+  "version" "4.2.0"
+
 "select-hose@^2.0.0":
   "integrity" "sha1-Yl2GWPhlr0Psliv8N2o3NZpJlMo="
   "resolved" "https://registry.npm.taobao.org/select-hose/download/select-hose-2.0.0.tgz"

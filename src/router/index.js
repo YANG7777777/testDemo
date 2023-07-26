@@ -319,6 +319,17 @@ const routes = [
       meta: { title: 'targetView', icon: 'example' },
       component: () => import(/* webpackChunkName: "tree" */ '../views/routerLink/targetView')
     }]
+  }, {
+    path: '/upload',
+    name: 'upload',
+    component: Layout,
+    meta: { title: 'upload', icon: 'el-icon-location-information' },
+    children: [{
+      path: 'upload',
+      name: 'upload',
+      meta: { title: 'upload', icon: 'example' },
+      component: () => import(/* webpackChunkName: "tree" */ '../views/upload')
+    }]
   }
 ]
 

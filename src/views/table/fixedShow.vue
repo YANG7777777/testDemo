@@ -38,7 +38,8 @@ export default {
         address: '北京 海淀',
         height: 180,
         weight: 80,
-        status: 'work'
+        status: 'work',
+        isUsed: true,
       }, {
         data: '2121-10-24',
         upData: '2121-4-45',
@@ -48,7 +49,8 @@ export default {
         address: '北京 海淀',
         height: 180,
         weight: 80,
-        status: 'home'
+        status: 'home',
+        isUsed: false,
       }],
       rowLabel: ''
     }
