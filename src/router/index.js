@@ -202,6 +202,18 @@ const routes = [
       path: 'canvas',
       meta: { title: 'Canvas', icon: 'example' },
       component: () => import(/* webpackChunkName: "amap" */ '../views/chart/canvas')
+    },
+    {
+      name: 'aniLie',
+      path: 'aniLie',
+      meta: { title: '折线填充', icon: 'example' },
+      component: () => import(/* webpackChunkName: "amap" */ '../views/chart/canvas/aniLine.vue')
+    },
+    {
+      name: 'flexCanvas',
+      path: 'flexCanvas',
+      meta: { title: '自适应', icon: 'example' },
+      component: () => import(/* webpackChunkName: "amap" */ '../views/chart/canvas/flexCanvas.vue')
     }]
   },
 
