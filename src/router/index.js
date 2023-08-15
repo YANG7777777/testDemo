@@ -214,6 +214,12 @@ const routes = [
       path: 'flexCanvas',
       meta: { title: '自适应', icon: 'example' },
       component: () => import(/* webpackChunkName: "amap" */ '../views/chart/canvas/flexCanvas.vue')
+    },
+    {
+      name: 'clearLine',
+      path: 'clearLine',
+      meta: { title: 'clearRect', icon: 'example' },
+      component: () => import(/* webpackChunkName: "amap" */ '../views/chart/canvas/clearLine.vue')
     }]
   },
 
