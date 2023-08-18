@@ -16,6 +16,7 @@
     "echarts": "^5.2.2",
     "element-ui": "^2.15.6",
     "js-cookie": "^3.0.1",
+    "moment": "^2.29.4",
     "screenfull": "^4.2.0",
     "vue": "^2.6.11",
     "vue-baidu-map": "^0.21.22",

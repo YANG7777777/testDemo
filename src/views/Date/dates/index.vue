@@ -11,14 +11,27 @@
             end-placeholder="结束日期"
         ></el-date-picker>
         <div class="abd"></div>
+        <div>
+             <el-date-picker
+                style="width: 320px;"
+                v-model="value1"
+                type="week"
+                value-format="yyyy-MM-dd"
+                :clearable="false"
+                :picker-options="{ firstDayOfWeek: 1 }"
+                @input="init"
+            ></el-date-picker>
+        </div>
     </div>
 </template>
 
 <script>
+import moment from 'moment'
 export default {
     name: 'dates',
     data: function () {
         return {
+            value1: "",
             dataValue: [],
             minDate: {},
             maxDate: {},
@@ -41,14 +54,36 @@ export default {
                     // console.log(time.getTime())
                     // console.log(this.dataValue)
                 }
-            }
+            },
         }
     },
+    mounted() {
+        this.getCurrentDate()
+    },
     methods: {
+        formateDate(value){
+            return moment(value).format("YYYY-MM-DD")
+        },
         rowBack() {
             this.dataValue = []
             this.minDate = {}
             this.maxDate = {}
+        },
+        init() {
+            console.log('1212121212',this.value1);
+            let weekOfday = moment(this.value1).format("E");
+            let Monday = moment(this.value1)
+            .subtract(weekOfday - 1, "days")
+            .format("YYYY-MM-DD"); //周一日期
+            let Sunday = moment(this.value1)
+            .add(7 - weekOfday, "days")
+            .format("YYYY-MM-DD"); //周日日期
+            console.log(Monday, Sunday);
+        },
+        getCurrentDate() {
+            let cur = moment().format('YYYY-MM-DD')
+            this.value1 = cur
+            this.init()
         }
     }
 }
