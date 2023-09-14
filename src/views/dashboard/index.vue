@@ -10,6 +10,7 @@
         :data="tableData"
         v-loading="loading"
         style="width: 100%">
+          <div></div>
         <el-table-column
           prop="date"
           label="日期"
@@ -26,12 +27,24 @@
         </el-table-column>
       </el-table>
     </div>
+    <div class="countTo">
+      <count-to 
+        :startVal='0' 
+        :endVal='2017' 
+        :duration='4000' 
+        :autoplay='true' 
+        :prefix="'+'" 
+        :suffix="'个'"
+      ></count-to>
+    </div>
   </div>
 </template>
 
 <script>
+import countTo from 'vue-count-to';
 export default {
   name: 'DashBoard',
+  components: { countTo },
   data() {
     return {
       changeFlag: false,
@@ -56,6 +69,9 @@ export default {
     }
   },
   methods: {
+    easingFn(item) {
+      console.log('1212',item)
+    },
     handleCommit() {
       this.changeFlag = !this.changeFlag
       console.log(123)
@@ -90,7 +106,7 @@ export default {
     for(var i = 0; i < cost.length; i ++) {
       console.log(cost[i])
     }
-    
+
   }
 
 }
@@ -102,7 +118,7 @@ export default {
 }
 .el-loading-spinner {
     /*这个是自己想设置的 gif 加载动图*/
-    background-image: url('../../directives/loading/logo_rot.svg'); 
+    background-image: url('../../directives/loading/logo_rot.svg');
     background-repeat: no-repeat;
     height: 100px;
     width: 100%;
@@ -115,15 +131,26 @@ export default {
     from { transform: rotate(0deg); }
     to { transform: rotate(360deg); }
   }
-  
+
   .el-loading-spinner .circular {
     /*隐藏 之前  element-ui  默认的 loading 动画*/
     display: none;
   }
-  
+
   .el-loading-spinner .el-loading-text {
     /*为了让文字在loading图下面*/
     margin: 106px 0px;
     color: #da70a0;
+  }
+  .countTo {
+    margin-top: 20px;
+    width: 100%;
+    height: 200px;
+    line-height: 200px;
+    text-align: center;
+    background-color: white;
+    color: #da70a0;
+    font-size: 30px;
+    font-weight: 600;
   }
 </style>

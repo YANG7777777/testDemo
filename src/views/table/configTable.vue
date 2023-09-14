@@ -85,6 +85,7 @@
 <script>
 import { reportConfig } from './config/editTableConfig'
 import EditCell from '../../components/editCell'
+
 export default {
   name: 'configTable',
   data () {
@@ -143,9 +144,8 @@ export default {
     },
     hasDot (num) {
       // 保留4位小数点过滤器 不四舍五入
-      var toFixedNum = Number(num).toFixed(5)
-      var realVal = toFixedNum.substring(0, toFixedNum.toString().length - 1)
-      return realVal
+        let toFixedNum = Number(num).toFixed(5)
+        return toFixedNum.substring(0, toFixedNum.toString().length - 1)
     },
     tableCellStale ({ row, column, rowIndex, columnIndex }) { // 表格背景颜色样式
       if ((row.row_head === '总计' && columnIndex !== 9) || columnIndex === 5) {

@@ -20,6 +20,7 @@
     "screenfull": "^4.2.0",
     "vue": "^2.6.11",
     "vue-baidu-map": "^0.21.22",
+    "vue-count-to": "^1.0.13",
     "vue-dplayer": "^0.0.10",
     "vue-router": "^3.2.0",
     "vue-to-pdf": "^1.0.0",

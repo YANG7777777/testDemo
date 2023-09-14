@@ -9011,6 +9011,11 @@
     "bmaplib.markerclusterer" "^1.0.13"
     "markdown-it" "^8.4.0"
 
+"vue-count-to@^1.0.13":
+  "integrity" "sha512-6R4OVBVNtQTlcbXu6SJ8ENR35M2/CdWt3Jmv57jOUM+1ojiFmjVGvZPH8DfHpMDSA+ITs+EW5V6qthADxeyYOQ=="
+  "resolved" "https://registry.npmjs.org/vue-count-to/-/vue-count-to-1.0.13.tgz"
+  "version" "1.0.13"
+
 "vue-dplayer@^0.0.10":
   "integrity" "sha512-l6d6OnhEUO87lhAees9mEBUFsG5Thqv/VeEVZlSQ993/S0oxvWTDLjjkzH59hO2PALimBK2kB6yNYsHyJBgotw=="
   "resolved" "https://registry.npmjs.org/vue-dplayer/-/vue-dplayer-0.0.10.tgz"
