@@ -191,6 +191,7 @@ const routes = [
     path: '/chart',
     name: 'Echart',
     component: Layout,
+    redirect: '/chart/ampa',
     meta: { title: '图形', icon: 'el-icon-location-information' },
     children: [{
       name: 'Amap',
@@ -220,6 +221,11 @@ const routes = [
       path: 'clearLine',
       meta: { title: 'clearRect', icon: 'example' },
       component: () => import(/* webpackChunkName: "amap" */ '../views/chart/canvas/clearLine.vue')
+    },{
+      name: 'hoverChart',
+      path: 'hoverChart',
+      meta: { title: 'hoverChart', icon: 'example'},
+      component: () => import(/* webpackChunkName: "amap" */ '../views/chart/hoverChart/index.vue')
     }]
   },
 
