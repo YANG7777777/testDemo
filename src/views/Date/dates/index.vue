@@ -22,13 +22,23 @@
                 @input="init"
             ></el-date-picker>
         </div>
+        <div style="background: pink;">
+            <h1>日期类型选择器</h1>
+            <date-type-picker
+                @handleDate="getDate"
+            ></date-type-picker>
+        </div>
     </div>
 </template>
 
 <script>
 import moment from 'moment'
+import dateTypePicker from '@/components/dateTypePicker/index.vue'
 export default {
     name: 'dates',
+    components: {
+        dateTypePicker
+    },
     data: function () {
         return {
             value1: "",
@@ -61,6 +71,9 @@ export default {
         this.getCurrentDate()
     },
     methods: {
+        getDate(val) {
+            console.log('current select date', val)
+        },
         formateDate(value){
             return moment(value).format("YYYY-MM-DD")
         },
