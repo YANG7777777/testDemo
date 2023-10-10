@@ -13,6 +13,8 @@ Vue.use(ElementUI)
 import VueDPlayer from "vue-dplayer";
 import "vue-dplayer/dist/vue-dplayer.css";
 Vue.use(VueDPlayer);
+import showtip from './directives/showTip/index'
+Vue.directive('showtip', showtip)
 
 // 防止el-button重复点击
 Vue.directive('preventReClick', {

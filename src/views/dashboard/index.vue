@@ -37,6 +37,32 @@
         :suffix="'个'"
       ></count-to>
     </div>
+    <div class="tipBox">
+      <p style="text-align:center;">判断文字是否超出</p>
+
+        <div class="outWidth">
+        <el-tooltip
+          :content="desc_not" 
+          v-showtip
+          placement="top-start">
+          <span class="tip_value tip_style">
+            <span class="ellipse-text">{{ desc_not || '--' }}</span>
+            </el-input>
+          </span>
+        </el-tooltip>
+      </div>
+
+      <div class="outWidth">
+        <el-tooltip
+          :content="desc_yet" 
+          v-showtip
+          placement="top-start">
+          <span class="tip_value tip_style">
+            <span class="ellipse-text">{{ desc_yet || '--' }}</span>
+          </span>
+        </el-tooltip>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -65,7 +91,9 @@ export default {
         date: '2016-05-03',
         name: '王小虎',
         address: '上海市普陀区金沙江路 1516 弄'
-      }]
+      }],
+      desc_not: '上海市普陀区金沙江路',
+      desc_yet: '上4444海市fas普陀区234金沙江路,上海市普陀区金沙江路.上海市普陀区金沙江路',
     }
   },
   methods: {
@@ -152,5 +180,44 @@ export default {
     color: #da70a0;
     font-size: 30px;
     font-weight: 600;
+  }
+</style>
+<style lang="less" scoped>
+  .tipBox {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: white;
+    .outWidth { // 上层盒子的宽度
+      display: inline-block;
+      width: 200px;
+      padding: 10px 5px;
+      background-color: pink;
+      margin: 0 5px;
+    }
+    .tip_style {
+      display: inline-block;
+      width: 100%;
+      margin: 0;
+      padding: 0;
+    }
+    .tip_value {
+       /* // 核心 上级元素flex布局，flex1后可获取真实宽度判断 */
+      flex: 1;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      vertical-align: bottom;
+    }
+     /* // 目前什么内容都没有，方便标识而已 */
+    ::v-deep .ellipse-text{
+
+    }
+    ::v-deep .el-input__inner {
+      flex: 1;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      vertical-align: bottom;
+    }
   }
 </style>
